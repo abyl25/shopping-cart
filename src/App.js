@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from './components/Navbar';
-import Search from './components/Search';
+import Header from './components/Header';
+// import Search from './components/Search';
 import Products from './components/Products';
 import './App.css';
 
 class App extends Component {
   state = {
-    products: []
+    products: [],
+    cart: [],
+    productQuantity: 1
   };
 
   componentDidMount() {
@@ -23,12 +25,22 @@ class App extends Component {
     })
   }
 
+  handleAddToCart = (product) => {
+    // console.log('added product(app.js): ' + JSON.stringify(product) );
+    this.setState((state) => {
+      return { cart: [...state.cart, product] };
+    }, () => {
+      console.log('cart: '); console.log(this.state.cart);
+    });
+  }
+  
+
   render() {
     return (
       <div className="App">
-        <Navbar/>
-        <Search/>
-        <Products products={this.state.products}/>
+        <Header/>
+        <Products products={this.state.products} productQuantity={this.state.productQuantity} 
+          addToCart={this.handleAddToCart} />
       </div>
     );
   }

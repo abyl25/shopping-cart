@@ -1,0 +1,49 @@
+header {
+    padding: 15px;
+    width: 100%;
+    background: #fff;
+}
+
+header .container{
+    display: flex;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.search {
+    margin-left: 60px;
+}
+
+.search-form {
+    display: flex;
+}
+
+.search-input {
+    height: 36px;
+    border: 1px solid #077915;
+    padding: 5px 10px;
+    border-radius: 2px 0 0 2px;
+    /* width: 100%; */
+    width: 300px;
+    max-width: 350px;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.search-btn {
+    background: #077915 url(https://res.cloudinary.com/sivadass/image/upload/v1494692031/icons/search.png) 50% no-repeat;
+    /* background: #077915; */
+    display: inline-block;
+    border: 0;
+    border-radius: 0 2px 2px 0;
+    width: 96px;
+    height: 36px;   
+    padding: 0 16px;
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
