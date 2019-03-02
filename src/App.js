@@ -30,15 +30,21 @@ class App extends Component {
     this.setState((state) => {
       return { cart: [...state.cart, product] };
     }, () => {
-      console.log('cart: '); console.log(this.state.cart);
+      // console.log('cart: '); console.log(this.state.cart);
     });
   }
   
+  handleRemoveFromCart = (id) => {
+    console.log('removed product(app.js): ' + id);
+    this.setState((state) => {
+      return { cart: state.cart.filter(item => item.id !== id)};
+    });
+  }
 
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Header cartProducts={this.state.cart} removeFromCart={this.handleRemoveFromCart} />
         <Products products={this.state.products} productQuantity={this.state.productQuantity} 
           addToCart={this.handleAddToCart} />
       </div>

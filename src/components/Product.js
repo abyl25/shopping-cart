@@ -6,11 +6,11 @@ class Product extends Component {
         quantity: ''
     };
 
-    // onChangeHandler = (e) => {
-    //     this.setState({
-    //         [e.target.name]: e.target.value
-    //     });
-    // }
+    onChangeHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
 
     addToCart = (product) => {
         // console.log('added porduct: ' + JSON.stringify(product));
@@ -29,7 +29,8 @@ class Product extends Component {
                 <p className="product-name">{ product.name }</p>
                 <p className="product-price">{ product.price } tng</p>
                 {/* quantity:  */}
-                <input type="text" name="quantity" className="quantity-input" value={this.props.productQuantity} />
+                <input type="text" name="quantity" className="quantity-input" value={this.props.productQuantity} 
+                  onChange={this.onChangeHandler} />
                 <div className="add-action">
                     <button type="button" className="add-to-cart-btn" onClick={this.addToCart.bind(this, product)}>ADD TO CART</button>
                 </div>

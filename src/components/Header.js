@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Cart from './Cart';
 import './header.css';
 
 class Header extends Component {
@@ -31,8 +32,12 @@ class Header extends Component {
                             <button type="submit" className="search-btn" onClick={this.handleSubmit} />
                         </form>
                     </div>
+                    {/* <div className="cart"> */}
+                        {/* <h3>Cart</h3> */}
+                    {/* </div> */}
+                    
                     <div className="cart">
-                        <h3>Cart</h3>
+                        <Cart cartProducts={this.props.cartProducts} removeFromCart={this.props.removeFromCart}/>
                     </div>
                 </div>
             </header> 

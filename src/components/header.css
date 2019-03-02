@@ -47,3 +47,25 @@ header .container{
     font-size: inherit;
     cursor: pointer;
 }
+
+.cart {
+    display: flex;
+    margin-left: 65px;
+}
+
+.cart-info {
+    color: #077915;
+    font-size: 14px;
+    text-align: right;
+}
+
+.show-cart-btn {
+    border: 0;
+    margin-left: 15px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.show-cart-btn:focus {
+    outline: none !important;
+}
