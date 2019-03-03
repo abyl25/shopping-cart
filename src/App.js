@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     products: [],
     cart: [],
-    productQuantity: 1
+    productQuantity: 1,
+    searchName: ''
   };
 
   componentDidMount() {
@@ -41,12 +42,19 @@ class App extends Component {
     });
   }
 
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <Header cartProducts={this.state.cart} removeFromCart={this.handleRemoveFromCart} />
+        <Header cartProducts={this.state.cart} searchName={this.state.searchName} 
+          removeFromCart={this.handleRemoveFromCart} onChangeHandler={this.onChangeHandler} />
         <Products products={this.state.products} productQuantity={this.state.productQuantity} 
-          addToCart={this.handleAddToCart} />
+          searchName={this.state.searchName} addToCart={this.handleAddToCart} />
       </div>
     );
   }

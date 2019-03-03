@@ -6,13 +6,15 @@ header {
 
 header .container{
     display: flex;
+    /* justify-content: space-between; */
     max-width: 960px;
-    margin: 0 auto;
-    padding: 0 30px;
+    margin: 0 30px;
+    /* padding: 0 30px; */
 }
 
 .search {
-    margin-left: 60px;
+    flex-grow: 1;
+    margin: 0 65px;
 }
 
 .search-form {
@@ -20,13 +22,15 @@ header .container{
 }
 
 .search-input {
-    height: 36px;
+    /* flex: 1 0 0; */
+    /* flex-basis: 100%; */
     border: 1px solid #077915;
-    padding: 5px 10px;
     border-radius: 2px 0 0 2px;
-    /* width: 100%; */
-    width: 300px;
-    max-width: 350px;
+    height: 36px;
+    /* max-width: 400px; */
+    width: 100%;
+    /* width: 300px; */
+    padding: 5px 10px;
     font-size: inherit;
     font-family: inherit;
 }
@@ -51,6 +55,7 @@ header .container{
 .cart {
     display: flex;
     margin-left: 65px;
+    position: relative;
 }
 
 .cart-info {
@@ -67,5 +72,81 @@ header .container{
 }
 
 .show-cart-btn:focus {
+    outline: none !important;
+}
+
+.cart-preview {
+    display: none;
+    border: 1px solid #ccc;
+    /* width: 360px;
+    height: 388px; */
+    background: #fff;
+}
+
+.cart-preview.active {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 48px;
+    right: 0;
+    width: 360px;
+    height: 388px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+}
+
+/* .cart-body {
+
+} */
+
+
+.cart-items {
+    list-style: none;
+    width: 360px;
+    height: 320px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+.cart-item:hover {
+    background: #f5f5f5;
+}
+
+.product-info {
+    flex: 1;
+    margin-left: 16px;
+}
+
+.product-info p {
+    color: #999;
+    font-size: 14px;
+    text-align: left;
+}
+
+.product-total p {
+    color: #999;
+    font-size: 14px;
+    text-align: right;
+}
+
+.product-remove {
+    border: none;
+    background: #fff;
+    margin-left: 24px;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    font-size: 22px;
+    color: #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+.product-remove:hover {
+    /* background: #f5f5f5; */
+    color: red;
+}
+.product-remove:focus {
     outline: none !important;
 }

@@ -4,14 +4,14 @@ import './header.css';
 
 class Header extends Component {
     state = {
-        title: ''
+        searchName: ''
     };
 
-    onChangeHandler = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
+    // onChangeHandler = (e) => {
+    //     this.setState({
+    //         [e.target.name]: e.target.value
+    //     });
+    // }
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -25,10 +25,9 @@ class Header extends Component {
                         <h3>Shopping cart</h3>
                     </div>              
                     <div className="search">
-                        <form action="#" className="search-form">
-                            <input type="text" className="search-input" name="title" 
-                            value={this.state.title} placeholder="Search"  
-                            onChange={this.onChangeHandler}/>
+                        <form action="#" className="search-form" autoComplete="off">
+                            <input type="text" className="search-input" name="searchName" placeholder="Search"
+                              value={this.props.searchName} onChange={this.props.onChangeHandler} />
                             <button type="submit" className="search-btn" onClick={this.handleSubmit} />
                         </form>
                     </div>
