@@ -20,23 +20,17 @@ class App extends Component {
   getProducts = () => {
     const productsUrl = 'https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json';
     axios.get(productsUrl).then(res => {
-      this.setState({
-        products: res.data
-      });
+      this.setState({ products: res.data });
     })
   }
 
   handleAddToCart = (product) => {
-    // console.log('added product(app.js): ' + JSON.stringify(product) );
     this.setState((state) => {
       return { cart: [...state.cart, product] };
-    }, () => {
-      // console.log('cart: '); console.log(this.state.cart);
     });
   }
   
   handleRemoveFromCart = (id) => {
-    console.log('removed product(app.js): ' + id);
     this.setState((state) => {
       return { cart: state.cart.filter(item => item.id !== id)};
     });
