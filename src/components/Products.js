@@ -10,7 +10,8 @@ class Products extends Component {
             return prod => prod.name.toLowerCase().includes(term.toLowerCase())           
         }
         const products = productsList.filter(search(searchName)).map(product => <Product key={product.id} 
-            product={product} productQuantity={this.props.productQuantity} addToCart={this.props.addToCart} />); 
+            product={product} productQuantity={this.props.productQuantity} addToCart={this.props.addToCart} 
+            onChangeHandler={this.props.onChangeHandler} />); 
         
         let viewProducts;
         if (products.length === 0 && searchName) {

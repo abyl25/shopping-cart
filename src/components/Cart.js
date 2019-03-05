@@ -5,11 +5,7 @@ class Cart extends Component {
         super(props);
         this.cartPreview = React.createRef();
     }
-
-    state = {
-        cartProducts: [],
-        showCart: false
-    };
+    // const inputEl = useRef(null);
 
     componentDidMount() {
         document.addEventListener("click", this.handleClickOutside.bind(this), true);
@@ -19,30 +15,18 @@ class Cart extends Component {
         document.removeEventListener("click", this.handleClickOutside.bind(this), true);
     }
 
-    UNSAFE_componentWillReceiveProps (nextProps) {
-        this.setState({
-            cartProducts: nextProps.cartProducts 
-        });
-    }
-
-    onCartBtnClick = () => {
-        this.setState((state) => ({showCart: !state.showCart }) );
-    }
-
     handleClickOutside(event) {
         const cartNode = this.cartPreview.current;
         if (cartNode.classList.contains("active")) {
             if (!cartNode || !cartNode.contains(event.target)) {
-                this.setState({
-                    showCart: false
-                });
+                this.props.toggleShowCart();
                 event.stopPropagation();
             }
         }
     }
 
     render() {
-        const cartProducts = this.state.cartProducts;
+        const cartProducts = this.props.cartProducts;
         console.log('cart products: ');
         console.log(cartProducts);
 
@@ -65,7 +49,7 @@ class Cart extends Component {
 
         let cartView;
         if (cartProducts.length === 0) {
-            cartView = '';
+            cartView = <h2 className="empty-cart">Cart is Empty</h2>;
         } else {
             cartView = products;
         }
@@ -76,11 +60,11 @@ class Cart extends Component {
                     <p>No. of items: 0</p>
                     <p>total price: 0</p>
                 </div>
-                <button className="show-cart-btn" onClick={this.onCartBtnClick} >
+                <button className="show-cart-btn" onClick={this.props.toggleShowCart} >
                     <img src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png" alt=""/>
                     <span className="cart-count">0</span>
                 </button>
-                <div className={this.state.showCart ? "cart-preview active" : "cart-preview"} ref={this.cartPreview} >
+                <div className={this.props.showCart ? "cart-preview active" : "cart-preview"} ref={this.cartPreview} >
                     <ul className="cart-items">
                         { cartView }
                     </ul>

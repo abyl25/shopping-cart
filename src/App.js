@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
-// import Search from './components/Search';
 import Products from './components/Products';
 import './App.css';
 
@@ -9,8 +8,9 @@ class App extends Component {
   state = {
     products: [],
     cart: [],
+    showCart: false,
     productQuantity: 1,
-    searchName: ''
+    searchName: '',
   };
 
   componentDidMount() {
@@ -48,13 +48,18 @@ class App extends Component {
     });
   }
 
+  toggleShowCart = () => {
+    this.setState((state) => ({ showCart: !state.showCart }));
+  }
+
   render() {
     return (
       <div className="App">
-        <Header cartProducts={this.state.cart} searchName={this.state.searchName} 
-          removeFromCart={this.handleRemoveFromCart} onChangeHandler={this.onChangeHandler} />
+        <Header cartProducts={this.state.cart} showCart={this.state.showCart} searchName={this.state.searchName} 
+          removeFromCart={this.handleRemoveFromCart} onChangeHandler={this.onChangeHandler} 
+          toggleShowCart={this.toggleShowCart} />
         <Products products={this.state.products} productQuantity={this.state.productQuantity} 
-          searchName={this.state.searchName} addToCart={this.handleAddToCart} />
+          searchName={this.state.searchName} addToCart={this.handleAddToCart} onChangeHandler={this.onChangeHandler} />
       </div>
     );
   }
