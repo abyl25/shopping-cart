@@ -3,8 +3,8 @@ import React, { useEffect, useRef } from 'react';
 const Cart = (props) => {
     const cartPreview = useRef(null);
     const cartProducts = props.cartProducts;
-    console.log('cart products: ');
-    console.log(cartProducts);
+    // console.log('cart products: ');
+    // console.log(cartProducts);
 
     useEffect(() => {
         document.addEventListener("click", handleClickOutside.bind(this), true);

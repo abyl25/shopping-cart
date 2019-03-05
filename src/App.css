@@ -62,9 +62,30 @@ html {
 }
 
 .add-to-cart-btn {
+  display: block;
+  width: 90%;
   border: 0;
   border-radius: 2px;
   height: 35px;
+  margin: 0 auto;
+  padding: 0 15px;
+  color: #fff;
+  background: #077915;
+  font-size: inherit;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+}
+
+.product-more-info-btn {
+  display: block;
+  width: 90%;
+  text-decoration: none;
+  border: 0;
+  border-radius: 2px;
+  height: 35px;
+  margin: 0 auto;
+  margin-top: 5px;
   padding: 0 15px;
   color: #fff;
   background: #077915;

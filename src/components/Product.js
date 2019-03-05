@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
     const product = props.product;
@@ -14,6 +15,7 @@ const Product = (props) => {
                 onChange={props.onChangeHandler} />
             <div className="add-action">
                 <button type="button" className="add-to-cart-btn" onClick={props.addToCart.bind(this, product)}>ADD TO CART</button>
+                <Link to={'/product/' + product.id } className="product-more-info-btn">MORE INFO</Link>
             </div>
         </div>
     );

@@ -12,6 +12,13 @@ header .container{
     /* padding: 0 30px; */
 }
 
+.brand #logo {
+    text-decoration: none;
+    font-size: 2em;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
 .search {
     flex-grow: 1;
     margin: 0 65px;

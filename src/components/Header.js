@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Cart from './Cart';
 import './header.css';
 
@@ -11,7 +12,8 @@ const Header = (props) => {
         <header> 
             <div className="container">
                 <div className="brand">
-                    <h3>Shopping cart</h3>
+                    {/* <h3>Shopping cart</h3> */}
+                    <Link id="logo" to="/" >Shopping cart</Link>
                 </div>              
                 <div className="search">
                     <form action="#" className="search-form" autoComplete="off">
