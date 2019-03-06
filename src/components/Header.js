@@ -26,6 +26,7 @@ const Header = (props) => {
                     <Cart cartProducts={props.cartProducts} showCart={props.showCart} removeFromCart={props.removeFromCart}
                       toggleShowCart={props.toggleShowCart} />
                 </div>
+                
             </div>
         </header> 
     );
