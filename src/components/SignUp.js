@@ -6,9 +6,6 @@ const SignUpPage = () => (
     <div>
         <h1>SignUp</h1>
         <SignUpForm />
-        {/* <FirebaseContext.Consumer>
-            {firebase => <SignUpForm firebase={firebase} />}
-        </FirebaseContext.Consumer> */}
     </div>
 );
 
@@ -23,7 +20,7 @@ class SignUpFormBase extends React.Component {
 
     onSubmit = event => {
         event.preventDefault();
-        const { username, email, passwordOne } = this.state;
+        const { email, passwordOne } = this.state;
         this.props.firebase.doCreateUserWithEmailAndPassword(email, passwordOne).then(authUser => {
             this.setState({ ...this.state });
             this.props.history.push("/");

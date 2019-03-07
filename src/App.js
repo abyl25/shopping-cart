@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Route } from 'react-router-dom'; 
 import axios from 'axios';
-import Firebase, { FirebaseContext } from './components/Firebase';
+import { withAuthentication } from './components/Session';
 import Header from './components/Header';
 import About from './components/About';
 import SignUp from './components/SignUp';
@@ -59,25 +59,23 @@ class App extends Component {
 
   render() {
     return (
-      <FirebaseContext.Provider value={new Firebase()}>
-        <BrowserRouter>
-          <div className="App">
-            <Header cartProducts={this.state.cart} showCart={this.state.showCart} searchName={this.state.searchName} 
-              removeFromCart={this.handleRemoveFromCart} onChangeHandler={this.onChangeHandler} 
-              toggleShowCart={this.toggleShowCart} />
-            <Route exact path="/" render={(props) => <Products {...props} products={this.state.products} productQuantity={this.state.productQuantity}
-              searchName={this.state.searchName} addToCart={this.handleAddToCart} onChangeHandler={this.onChangeHandler} />} />
-            <Route exact path="/product/:id" render={(props) => 
-              <ProductDetails {...props} getProductById={this.getProductById} />
-            }/>
-            <Route exact path="/about" component={About}/>
-            <Route exact path="/signup" component={SignUp}/>
-            <Route exact path="/signin" component={SignIn}/>
-          </div>
-        </BrowserRouter>
-      </FirebaseContext.Provider>
+      <Router>
+        <div className="App">
+          <Header cartProducts={this.state.cart} showCart={this.state.showCart} searchName={this.state.searchName} 
+            removeFromCart={this.handleRemoveFromCart} onChangeHandler={this.onChangeHandler} 
+            toggleShowCart={this.toggleShowCart} />
+          <Route exact path="/" render={(props) => <Products {...props} products={this.state.products} productQuantity={this.state.productQuantity}
+            searchName={this.state.searchName} addToCart={this.handleAddToCart} onChangeHandler={this.onChangeHandler} />} />
+          <Route exact path="/product/:id" render={(props) => 
+            <ProductDetails {...props} getProductById={this.getProductById} />
+          }/>
+          <Route exact path="/about" component={About}/>
+          <Route exact path="/signup" component={SignUp}/>
+          <Route exact path="/signin" component={SignIn}/>
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default withAuthentication(App);

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AuthUserContext }  from './Session';
 import Cart from './Cart';
+import SignOutButton from './SignOut';
 import './header.css';
 
 const Header = (props) => {
@@ -8,11 +10,23 @@ const Header = (props) => {
         e.preventDefault();
     }
 
+    const NavigationAuth = (
+        <React.Fragment>
+            <li><Link to="/home">Home</Link></li>
+            <SignOutButton />
+        </React.Fragment>
+    );
+
+    const NavigationNonAuth = (
+        <React.Fragment>
+            <Link to="/signin">Sign in</Link>
+        </React.Fragment>   
+    );
+
     return (                  
         <header> 
             <div className="container">
                 <div className="brand">
-                    {/* <h3>Shopping cart</h3> */}
                     <Link id="logo" to="/" >Shopping cart</Link>
                 </div>              
                 <div className="search">
@@ -26,7 +40,10 @@ const Header = (props) => {
                     <Cart cartProducts={props.cartProducts} showCart={props.showCart} removeFromCart={props.removeFromCart}
                       toggleShowCart={props.toggleShowCart} />
                 </div>
-                
+
+                <AuthUserContext.Consumer>
+                    { authUser => authUser ? NavigationAuth : NavigationNonAuth }
+                </AuthUserContext.Consumer>
             </div>
         </header> 
     );
